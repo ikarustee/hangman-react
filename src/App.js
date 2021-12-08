@@ -16,12 +16,17 @@ function App() {
   // Check the wrong letters
   const [wrongLetters, setWrongLetters] = useState([])
 
+  // Eventlisteners if no input field is implemented
   useEffect(()=>{
     const handleKeydown = (e) => {
+      // descructure event
       const {key, keyCode} = e
+      // If game is playable and keys are a-z
       if(playable && keyCode >= 65 && keyCode <= 90) {
+        // set letters to lowercase
         const letter= key.toLowerCase()
 
+        // if the selected word includes the key that is hit
         if(selectedWord.includes(letter)) {
           // if the current correct letters do not include the letter
           if(!correctLetters.includes(letter)) {
