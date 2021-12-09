@@ -1,6 +1,10 @@
 import React from "react";
 
-const Figure = () => {
+// Need the wrongLetters prop to show the figure element by element
+const Figure = ({wrongLetters}) => {
+
+  const failedAttempts = wrongLetters.length
+
   return (
     <svg height="250" width="200" className="figure-container">
       {/* <!-- Rod --> */}
@@ -10,15 +14,17 @@ const Figure = () => {
       <line x1="20" y1="230" x2="100" y2="230" />
 
       {/* <!-- Head --> */}
-      <circle cx="140" cy="70" r="20" className="figure-part" />
+      {/* When there is the first fail attempt, show the head */}
+      {failedAttempts > 0 && <circle cx="140" cy="70" r="20" className="figure-part" />}
       {/* <!-- Body --> */}
-      <line x1="140" y1="90" x2="140" y2="150" className="figure-part" />
+      {/* When there is the second fail attempt, show the body */}
+      {failedAttempts > 1 && <line x1="140" y1="90" x2="140" y2="150" className="figure-part" />}
       {/* <!-- Arms --> */}
-      <line x1="140" y1="120" x2="120" y2="100" className="figure-part" />
-      <line x1="140" y1="120" x2="160" y2="100" className="figure-part" />
+      {failedAttempts > 2 && <line x1="140" y1="120" x2="120" y2="100" className="figure-part" />}
+      {failedAttempts > 3 && <line x1="140" y1="120" x2="160" y2="100" className="figure-part" />}
       {/* <!-- Legs --> */}
-      <line x1="140" y1="150" x2="120" y2="180" className="figure-part" />
-      <line x1="140" y1="150" x2="160" y2="180" className="figure-part" />
+      {failedAttempts > 4 && <line x1="140" y1="150" x2="120" y2="180" className="figure-part" />}
+      {failedAttempts > 5 && <line x1="140" y1="150" x2="160" y2="180" className="figure-part" />}
     </svg>
   );
 };

@@ -1,130 +1,139 @@
-* {
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+:root {
+  --shadow-color: 155deg 100% 17%;
+  --shadow-elevation-high:
+  0px 0.3px 0.3px hsl(var(--shadow-color) / 0.34),
+  0px 1.9px 2.1px -0.4px hsl(var(--shadow-color) / 0.34),
+  -0.1px 3.6px 4.1px -0.7px hsl(var(--shadow-color) / 0.34),
+  -0.1px 5.9px 6.6px -1.1px hsl(var(--shadow-color) / 0.34),
+  -0.2px 9.4px 10.6px -1.4px hsl(var(--shadow-color) / 0.34),
+  -0.3px 14.8px 16.7px -1.8px hsl(var(--shadow-color) / 0.34),
+  -0.5px 22.4px 25.2px -2.1px hsl(var(--shadow-color) / 0.34),
+  -0.7px 33.1px 37.2px -2.5px hsl(var(--shadow-color) / 0.34);
 }
-
-body, #root {
-  background-color: #34495e;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+body {
+  background-image: linear-gradient(
+    to top,
+    #009272,
+    #00966e,
+    #009a6a,
+    #009e64,
+    #00a25e
+  );
+  background-size: cover;
+  color: white;
+  font-family: 'Amatic SC', cursive;
+  font-size: 20px;
+  min-height: 100vh;
+  overflow-y: hidden;
+}
+h1 {font-size:3em}
+h2 {font-size:2.25em}
+h3 {font-size:1.75em}
+h2, h3 {margin:0.25em 0;}
+#root {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 80vh;
-  margin: 0;
-  overflow: hidden;
+  justify-content: center;
 }
-
-h1 {
-  margin: 20px 0 0;
+svg {
+  fill: white;
+  stroke:white; 
 }
-
-.game-container {
-  padding: 20px 30px;
-  position: relative;
-  margin: auto;
-  height: 350px;
-  width: 450px;
+svg.figure-container {
+  flex-basis: 50%;
+  text-align: center;
 }
-
-.figure-container {
-  fill: transparent;
-  stroke: #fff;
+line {
+  stroke-linecap:round;
   stroke-width: 4px;
-  stroke-linecap: round;
 }
-
-.figure-part {
-  display: none;
+.header {
+  text-align: center;
 }
-
-.wrong-letters-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  text-align: right;
+.game {
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 600px;
 }
-
-.wrong-letters-container p {
-  margin: 0 0 5px;
-}
-
-.wrong-letters-container span {
-  font-size: 24px;
-}
-
 .word {
   display: flex;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  flex-basis: 100%;
+  justify-content: center;
+  margin-top: 3em;
 }
-
-.letter {
-  border-bottom: 3px solid #2980b9;
+.wrongletters-container {
+  display: flex;
+  flex-basis: 50%;
+}
+.letter, .wrongletter {
+  border-bottom: 2px solid #055735;
   display: inline-flex;
-  font-size: 30px;
+  font-size: 40px;
   align-items: center;
   justify-content: center;
   margin: 0 3px;
   height: 50px;
   width: 20px;
 }
-
-.popup-container {
-  background-color: rgba(0, 0, 0, 0.3);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /* display: flex; */
-  display: none;
-  align-items: center;
-  justify-content: center;
+.wrongletter {
+  border-bottom: 0;
 }
-
-.popup {
-  background: #2980b9;
-  border-radius: 5px;
-  box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+.letter {font-size:40px;}
+.letterinputfield {
+  position: relative;
+  top:40px;
+}
+.letterinput {
+  position: relative;
+  background-color: white;
+  border:0;
+  border-radius: 8px;
+  width: 60px;
+  height: 60px;
+  padding:10px;
+  top:0;
+  left:0;
+  box-sizing: border-box;
+  font-size:40px;
   text-align: center;
+  color: transparent;
+  text-shadow: 0 0 0 #00a25e;
+  cursor:default;
 }
-
-.popup button {
-  cursor: pointer;
-  background-color: #fff;
-  color: #2980b9;
+input.letterinput {
   border: 0;
-  margin-top: 20px;
-  padding: 12px 20px;
-  font-size: 16px;
-}
-
-.popup button:active {
-  transform: scale(0.98);
-}
-
-.popup button:focus {
   outline: 0;
 }
 
-.notification-container {
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 10px 10px 0 0;
+.popup {
+  background-color: #03312777;
+  border-radius: 40px 40px 40px 0 ;
   padding: 15px 20px;
   position: absolute;
-  bottom: -50px;
+  bottom: -190px;
   transition: transform 0.3s ease-in-out;
+  box-sizing: border-box;
+  max-width: 450px;
+  text-align: center;
 }
 
-.notification-container p {
+.popup p {
   margin: 0;
 }
 
-.notification-container.show {
-  transform: translateY(-50px);
+.popup.show {
+  transform: translateY(-140%);
+}
+
+.alert {
+  justify-content: center;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.808);
+  color:#009272;
+  padding: 6em 4em;
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: var(--shadow-elevation-high);
+  width:300px;
 }
