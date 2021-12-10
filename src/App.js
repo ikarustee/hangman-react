@@ -8,8 +8,8 @@ import { notification } from "./components/Helpers"
 import NotificationPopup from "./components/NotificationPopup"
 import Alert from "./components/Alert"
 
-const wordList = ['abcdefghijkl']
-// const wordList = ["declaration", "tractor", "library", "computerscience"]
+// const wordList = ['abcdefghijkl']
+const wordList = ["declaration", "tractor", "library", "computerscience"]
 let selectedWord = wordList[Math.floor(Math.random() * wordList.length)]
 
 function App() {
