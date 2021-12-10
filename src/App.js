@@ -1,6 +1,6 @@
 import "./App.css"
 import React, {useState, useEffect} from "react"
-import Figure from "./components/Figure"
+import Drawing from "./components/Drawing"
 import Header from "./components/Header"
 import WrongLetters from "./components/WrongLetters"
 import Word from "./components/Word"
@@ -8,8 +8,8 @@ import { notification } from "./components/Helpers"
 import NotificationPopup from "./components/NotificationPopup"
 import Alert from "./components/Alert"
 
-const wordList = ['abcdef']
-// const wordList = ["declaration", "tractor", "library", "computer"]
+const wordList = ['abcdefghijkl']
+// const wordList = ["declaration", "tractor", "library", "computerscience"]
 let selectedWord = wordList[Math.floor(Math.random() * wordList.length)]
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
     setWrongLetters([])
     setCorrectLetters([])
 
-    // Get a new word
+    // Get a new word when game was won or lost
     const random = Math.floor(Math.random() * wordList.length)
     selectedWord = wordList[random]
   }
@@ -79,7 +79,7 @@ function App() {
     {/* Maybe this project was way too difficult for us */}
       <Header />
         <div className="game">
-          <Figure wrongLetters={wrongLetters} />
+          <Drawing wrongLetters={wrongLetters} />
           <WrongLetters wrongLetters={wrongLetters} />
           <Word selectedWord={selectedWord} correctLetters={correctLetters} />
           <NotificationPopup popup={notificationPopup} />

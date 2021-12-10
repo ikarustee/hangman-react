@@ -20,8 +20,8 @@ export function checkWin(correct, wrong, word) {
   });
   
   // Check for lose
-  // if the number of wrong guessed letters is bigger than 6 then set the state to lose
-  if(wrong.length === 6) status = 'lose';
+  // if the number of wrong guessed letters is bigger than 11 then set the state to lose
+  if(wrong.length === 11) status = 'lose';
   
   return status
 }
