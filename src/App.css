@@ -1,36 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
 :root {
-  --shadow-color: 155deg 100% 17%;
+  --shadow-color: 163deg 100% 13%;
+  --shadow-elevation-medium:
+    -0.3px 0.3px 0.5px hsl(var(--shadow-color) / 0.6),
+    -1.9px 1.8px 2.9px -1.2px hsl(var(--shadow-color) / 0.6),
+    -7.4px 6.9px 11.4px -2.5px hsl(var(--shadow-color) / 0.6);
   --shadow-elevation-high:
-  0px 0.3px 0.3px hsl(var(--shadow-color) / 0.34),
-  0px 1.9px 2.1px -0.4px hsl(var(--shadow-color) / 0.34),
-  -0.1px 3.6px 4.1px -0.7px hsl(var(--shadow-color) / 0.34),
-  -0.1px 5.9px 6.6px -1.1px hsl(var(--shadow-color) / 0.34),
-  -0.2px 9.4px 10.6px -1.4px hsl(var(--shadow-color) / 0.34),
-  -0.3px 14.8px 16.7px -1.8px hsl(var(--shadow-color) / 0.34),
-  -0.5px 22.4px 25.2px -2.1px hsl(var(--shadow-color) / 0.34),
-  -0.7px 33.1px 37.2px -2.5px hsl(var(--shadow-color) / 0.34);
+    -0.3px 0.3px 0.5px hsl(var(--shadow-color) / 0.55),
+    -3.1px 2.9px 4.8px -0.5px hsl(var(--shadow-color) / 0.55),
+    -6.6px 6.1px 10.1px -1px hsl(var(--shadow-color) / 0.55),
+    -12.7px 11.9px 19.6px -1.5px hsl(var(--shadow-color) / 0.55),
+    -23.5px 21.9px 36.1px -2px hsl(var(--shadow-color) / 0.55),
+    -40.8px 38.1px 62.8px -2.5px hsl(var(--shadow-color) / 0.55);
 }
 body {
   background-image: linear-gradient(
-    to top,
-    #009272,
-    #00966e,
-    #009a6a,
-    #009e64,
-    #00a25e
-  );
+  to top,
+  #009272,
+  #00966e,
+  #009a6a,
+  #009e64,
+  #00a25e
+);
   background-size: cover;
   color: white;
   font-family: 'Amatic SC', cursive;
   font-size: 20px;
   min-height: 100vh;
-  overflow-y: hidden;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 h1 {font-size:3em}
 h2 {font-size:2.25em}
 h3 {font-size:1.75em}
-h2, h3 {margin:0.25em 0;}
+h1, h2, h3 {
+  margin:0.25em 0;
+  text-transform: uppercase;
+}
 #root {
   display: flex;
   justify-content: center;
@@ -48,6 +56,7 @@ line {
   stroke-width: 4px;
 }
 .header {
+  margin-bottom: 2em;
   text-align: center;
 }
 .game {
@@ -107,32 +116,47 @@ input.letterinput {
 }
 
 .popup {
-  background-color: #03312777;
-  border-radius: 40px 40px 40px 0 ;
+  background-color: #005e41;
+  border-radius: 40px;
   padding: 15px 20px;
   position: absolute;
-  bottom: -190px;
   transition: transform 0.3s ease-in-out;
   box-sizing: border-box;
   max-width: 450px;
   text-align: center;
+  right: -450px;
+  bottom: 320px;
+  box-shadow: var(--shadow-elevation-medium);
 }
-
+.popup::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 40px;
+  position: absolute;
+  right: 40px;
+  bottom: -30px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 30px 0 0 30px;
+  border-color: #005e41 transparent transparent transparent;
+}
 .popup p {
   margin: 0;
 }
 
 .popup.show {
-  transform: translateY(-140%);
+  transform: translateX(-150%);
 }
 
 .alert {
   justify-content: center;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.808);
-  color:#009272;
+  color:#353b3a;
   padding: 6em 4em;
-  border-radius: 4px;
+  border-radius: 30px;
   text-align: center;
   box-shadow: var(--shadow-elevation-high);
   width:300px;
