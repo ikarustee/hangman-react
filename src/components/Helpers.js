@@ -2,7 +2,7 @@ export function notification(setter) {
     setter(true);
     setTimeout(() => {
       setter(false);
-    }, 4000);
+    }, 3000);
   }
   
 export function checkWin(correct, wrong, word) {
