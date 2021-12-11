@@ -1,3 +1,4 @@
 # Hangman Game In React
-## Group project WBS Coding School
-###  // ---- Try. Fail. Learn. Repeat. ---- //
+## // ---- Try. Fail. Repeat. ---- //
+
+Everbody knows this game. The words are generated with the help of an API. So it never gets boring. 😄
