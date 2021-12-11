@@ -86,7 +86,6 @@ function App() {
 
   return (
     <div className="App">
-    {/* Maybe this project was way too difficult for us */}
         {selectedWord ? (
           <div className="main">
           <Header />
