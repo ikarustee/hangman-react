@@ -37,7 +37,10 @@ body {
 }
 h1 {font-size:3em}
 h2 {font-size:2.25em}
-h3 {font-size:1.75em}
+h3 {
+  font-size:1.75em;
+  line-height: 1;
+}
 h1, h2, h3 {
   margin:0.25em 0;
   text-transform: uppercase;
