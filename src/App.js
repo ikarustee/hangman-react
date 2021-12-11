@@ -8,13 +8,8 @@ import Word from "./components/Word"
 import NotificationPopup from "./components/NotificationPopup"
 import Alert from "./components/Alert"
 
-// const words = ['abcdefghijkl']
-// Maybe we can also use an API to create more random words
-
 function App() {
   const [words, setWords] = useState([])
-  // const words = ["declaration", "tractor", "library", "computerscience"]
-  // let selectedWord = words[Math.floor(Math.random() * words.length)]
   const [selectedWord, setSelectedWord] = useState('')
   // Check if game can be played (user won or lost)
   const [playable, setPlayable] = useState(true)
@@ -87,13 +82,14 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeydown)
     // Empty array will call useEffect only on the initial render
     // Only fires if the dependencies change
-  }, [correctLetters, wrongLetters, playable])
+  }, [correctLetters, wrongLetters, playable, selectedWord])
 
   return (
     <div className="App">
     {/* Maybe this project was way too difficult for us */}
-      <Header />
         {selectedWord ? (
+          <div className="main">
+          <Header />
           <div className="game">
           <Drawing wrongLetters={wrongLetters} />
           <WrongLetters wrongLetters={wrongLetters} />
@@ -101,9 +97,8 @@ function App() {
           <NotificationPopup popup={notificationPopup} />
           <Alert correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} />
         </div>
-        ) : (
-          <div>Empty game</div>
-        )}
+        </div>
+        ) : ('')}
     </div>
   )
 }
