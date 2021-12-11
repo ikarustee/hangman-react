@@ -1,19 +1,21 @@
 import "./App.css"
 import React, {useState, useEffect} from "react"
+import { notification } from "./components/Helpers"
 import Drawing from "./components/Drawing"
 import Header from "./components/Header"
 import WrongLetters from "./components/WrongLetters"
 import Word from "./components/Word"
-import { notification } from "./components/Helpers"
 import NotificationPopup from "./components/NotificationPopup"
 import Alert from "./components/Alert"
 
-// const wordList = ['abcdefghijkl']
+// const words = ['abcdefghijkl']
 // Maybe we can also use an API to create more random words
-const wordList = ["declaration", "tractor", "library", "computerscience"]
-let selectedWord = wordList[Math.floor(Math.random() * wordList.length)]
 
 function App() {
+  const [words, setWords] = useState([])
+  // const words = ["declaration", "tractor", "library", "computerscience"]
+  // let selectedWord = words[Math.floor(Math.random() * words.length)]
+  const [selectedWord, setSelectedWord] = useState('')
   // Check if game can be played (user won or lost)
   const [playable, setPlayable] = useState(true)
   // Check the correct letters
@@ -31,15 +33,28 @@ function App() {
     setCorrectLetters([])
 
     // Get a new word when game was won or lost
-    const random = Math.floor(Math.random() * wordList.length)
-    selectedWord = wordList[random]
+    const random = Math.floor(Math.random() * words.length)
+    setSelectedWord(words[random])
   }
+
+  useEffect(() => {
+    fetch('https://random-word-api.herokuapp.com/word?number=10')
+      .then((res) => res.json())
+      .then((res) => setWords(res))
+  }, [])
+
+  useEffect(() => {
+    console.log(words)
+    setSelectedWord(words[Math.floor(Math.random() * words.length)])
+    // setSelectedWord('apple')
+  }, [words])
 
   // Eventlisteners if no input field is implemented
   useEffect(()=>{
     const handleKeydown = (e) => {
       // descructure event
       const {key, keyCode} = e
+      console.log(key, keyCode, selectedWord, playable)
       // If game is playable and keys are a-z
       if(playable && keyCode >= 65 && keyCode <= 90) {
         // set letters to lowercase
@@ -71,7 +86,6 @@ function App() {
     window.addEventListener('keydown', handleKeydown)
     return () => window.removeEventListener('keydown', handleKeydown)
     // Empty array will call useEffect only on the initial render
-    // Alternativ: put in a dependency
     // Only fires if the dependencies change
   }, [correctLetters, wrongLetters, playable])
 
@@ -79,13 +93,17 @@ function App() {
     <div className="App">
     {/* Maybe this project was way too difficult for us */}
       <Header />
-        <div className="game">
+        {selectedWord ? (
+          <div className="game">
           <Drawing wrongLetters={wrongLetters} />
           <WrongLetters wrongLetters={wrongLetters} />
           <Word selectedWord={selectedWord} correctLetters={correctLetters} />
           <NotificationPopup popup={notificationPopup} />
           <Alert correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} />
         </div>
+        ) : (
+          <div>Empty game</div>
+        )}
     </div>
   )
 }
