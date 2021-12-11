@@ -9,6 +9,7 @@ import NotificationPopup from "./components/NotificationPopup"
 import Alert from "./components/Alert"
 
 // const wordList = ['abcdefghijkl']
+// Maybe we can also use an API to create more random words
 const wordList = ["declaration", "tractor", "library", "computerscience"]
 let selectedWord = wordList[Math.floor(Math.random() * wordList.length)]
 
