@@ -30,7 +30,6 @@ const Alert = ({correctLetters, wrongLetters, selectedWord, setPlayable, playAga
             <div className='alertmessage'>
                 <h2>{alertMessage}</h2>
                 <h3>{alertMessageWord}</h3>
-                {/* Dear Chris, this is what I really could remember and what I did not have to look up. Thanks to you*/ }
                 {/* If the game is playable, hide the button */}
                 {playable ? ('') : (<button onClick={playAgain} className='btn'>Play again!</button>)}
             </div>
