@@ -49,6 +49,10 @@ h1, h2, h3 {
   display: flex;
   justify-content: center;
 }
+.main {
+  position: relative;
+  max-width: 800px;
+}
 .header {
   margin-bottom: 2em;
   text-align: center;
@@ -115,20 +119,23 @@ input.letterinput {
   background-repeat: no-repeat;
   filter: drop-shadow(2px 4px 6px #005e41);
   margin: 0 15px;
-  bottom: 320px;
   position: absolute;
-  bottom: 25vh;
+  bottom: 15vh;
   right:0;
   transform: translateX(105%);
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
 }
 .popup p {
   margin: 0;
 }
 
 .popup.show {
-  transform: translateX(-90px);
+  transform: translateX(0%);
+  opacity: 1;
+  visibility: visible;
 }
 .alert {
   justify-content: center;
