@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 129.98">
+  <defs>
+    <style>
+      .a {
+        fill: url(#a);
+      }
+    </style>
+    <linearGradient id="a" data-name="Unbenannter Verlauf 18" x1="150.21" y1="114.49" x2="149.83" y2="8.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#005e41"/>
+      <stop offset="0.99" stop-color="#005e41"/>
+    </linearGradient>
+  </defs>
+  <path class="a" d="M293,111.41H269.89L257.64,130l-.09-18.57H7a7,7,0,0,1-7-7V7A7,7,0,0,1,7,0H293a7,7,0,0,1,7,7v97.49A7,7,0,0,1,293,111.41Z"/>
+</svg>
