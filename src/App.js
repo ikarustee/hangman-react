@@ -16,29 +16,36 @@ function App() {
   const [wrongLetters, setWrongLetters] = useState([])
   const [notificationPopup, setNotificationPopup] = useState(false)
 
+  const getRandomWords = () => {
+    fetch('https://random-word-api.herokuapp.com/word?number=10')
+      .then((res) => res.json())
+      .then((res) => setWords(res))
+}
+
+  useEffect(() => {
+    getRandomWords()
+  }, [])
+
   const playAgain = () => {
     setPlayable(true)
     setWrongLetters([])
     setCorrectLetters([])
+    getRandomWords()
 
     const random = Math.floor(Math.random() * words.length)
     setSelectedWord(words[random])
   }
 
   useEffect(() => {
-    fetch('https://random-word-api.herokuapp.com/word?number=10')
-      .then((res) => res.json())
-      .then((res) => setWords(res))
-  }, [])
-
-  useEffect(() => {
     console.log(words)
     setSelectedWord(words[Math.floor(Math.random() * words.length)])
   }, [words])
+
   useEffect(()=>{
     const handleKeydown = (e) => {
       const {key, keyCode} = e
-      console.log(key, keyCode, selectedWord, playable)
+      // console.log(key, keyCode, selectedWord, playable)
+      console.log(selectedWord)
       if(playable && keyCode >= 65 && keyCode <= 90) {
         const letter = key.toLowerCase()
         if(selectedWord.includes(letter)) {
