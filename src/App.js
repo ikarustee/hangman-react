@@ -37,7 +37,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(words)
     setSelectedWord(words[Math.floor(Math.random() * words.length)])
   }, [words])
 
