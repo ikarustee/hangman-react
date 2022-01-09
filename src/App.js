@@ -7,6 +7,7 @@ import WrongLetters from "./components/WrongLetters"
 import Word from "./components/Word"
 import NotificationPopup from "./components/NotificationPopup"
 import Alert from "./components/Alert"
+console.log('Hello')
 
 function App() {
   const [words, setWords] = useState([])
