@@ -7,6 +7,7 @@ import WrongLetters from "./components/WrongLetters"
 import Word from "./components/Word"
 import NotificationPopup from "./components/NotificationPopup"
 import Alert from "./components/Alert"
+import {checkWin} from "./components/Helpers"
 
 function App() {
   const [words, setWords] = useState([])
@@ -15,6 +16,18 @@ function App() {
   const [correctLetters, setCorrectLetters] = useState([])
   const [wrongLetters, setWrongLetters] = useState([])
   const [notificationPopup, setNotificationPopup] = useState(false)
+  const [countWonGames, setCountWonGames] = useState(0)
+  const [countLostGames, setCountLostGames] = useState(0)
+
+  function countGames() {
+    if( checkWin(correctLetters, wrongLetters, selectedWord) === 'win' ) {
+      setCountWonGames((prevWon) => prevWon + 1)
+      console.log('Won ' + countWonGames)
+    } else if( checkWin(correctLetters, wrongLetters, selectedWord) === 'lose') {
+      setCountLostGames((prev) => prev + 1)
+      console.log('lost ' + countLostGames)
+    }
+  }
 
   const getRandomWords = () => {
     fetch('https://random-word-api.herokuapp.com/word?number=10')
@@ -31,6 +44,7 @@ function App() {
     setWrongLetters([])
     setCorrectLetters([])
     getRandomWords()
+    countGames()
 
     const random = Math.floor(Math.random() * words.length)
     setSelectedWord(words[random])
@@ -44,7 +58,7 @@ function App() {
     const handleKeydown = (e) => {
       const {key, keyCode} = e
       // console.log(key, keyCode, selectedWord, playable)
-      // console.log(selectedWord)
+      console.log(selectedWord)
       if(playable && keyCode >= 65 && keyCode <= 90) {
         const letter = key.toLowerCase()
         if(selectedWord.includes(letter)) {
@@ -71,6 +85,7 @@ function App() {
         {selectedWord ? (
           <div className="main">
           <Header />
+          <h3>Games played: {countWonGames + countLostGames} | Won games: {countWonGames} | Lost games: {countLostGames}</h3>
           <div className="game">
           <Drawing wrongLetters={wrongLetters} />
           <WrongLetters wrongLetters={wrongLetters} />
