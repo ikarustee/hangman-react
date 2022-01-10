@@ -67,7 +67,8 @@ h3, h4 {
   font-weight:400;
   margin: 0 0 0.5em;
 }
-.popup h3 {
+.popup h3,
+.alertmessage h3 {
   font-family: 'Amatic SC', cursive;
 }
 .counter h6 {
