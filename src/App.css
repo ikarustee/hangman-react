@@ -94,17 +94,24 @@ h3, h4 {
   margin-bottom: 2em;
   text-align: center;
 }
-.counter {
+.counterholder {
   display:flex;
   justify-content: center;
   align-content: center;
+  width: 100%;
+  margin: 0 auto;
+  gap:20px;
+}
+.counter {
   background-color:white;
   color:black;
+  font-family: 'Raleway';
+  font-weight:200;
+  font-size: 14px;
   padding: 0.5em 1em;
+  text-align: center;
   border-radius: 8px;
   box-sizing: border-box;
-  width: 70%;
-  margin: 0 auto;
   box-shadow: var(--shadow-elevation-medium);
 }
 .game {
@@ -122,6 +129,8 @@ h3, h4 {
 .wrongletters-container {
   display: flex;
   flex-basis: 50%;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 .letter, .wrongletter {
   border-bottom: 2px solid #055735;

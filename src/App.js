@@ -46,9 +46,6 @@ function App() {
     setCorrectLetters([])
     getRandomWords()
     countGames()
-
-    const random = Math.floor(Math.random() * words.length)
-    setSelectedWord(words[random])
   }
 
   useEffect(() => {
@@ -85,11 +82,11 @@ function App() {
     <div className="App">
         {selectedWord ? (
           <div className="main">
-          <Header countWonGames={countWonGames} countLostGames={countLostGames}  />
+          <Header  countWonGames={countWonGames} countLostGames={countLostGames}  />
           {/* <Counter countWonGames={countWonGames} countLostGames={countLostGames} /> */}
           <div className="game">
           <Drawing wrongLetters={wrongLetters} />
-          <WrongLetters wrongLetters={wrongLetters} />
+          <WrongLetters wrongLetters={wrongLetters}/>
           <Word selectedWord={selectedWord} correctLetters={correctLetters} />
           <NotificationPopup popup={notificationPopup} />
           <Alert correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} />
