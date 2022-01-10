@@ -8,7 +8,7 @@ import Word from "./components/Word"
 import NotificationPopup from "./components/NotificationPopup"
 import Alert from "./components/Alert"
 import {checkWin} from "./components/Helpers"
-// import Counter from "./components/Counter"
+
 
 function App() {
   const [words, setWords] = useState([])
@@ -23,10 +23,8 @@ function App() {
   function countGames() {
     if( checkWin(correctLetters, wrongLetters, selectedWord) === 'win' ) {
       setCountWonGames((prevWon) => prevWon + 1)
-      // console.log('Won ' + countWonGames)
     } else if( checkWin(correctLetters, wrongLetters, selectedWord) === 'lose') {
       setCountLostGames((prev) => prev + 1)
-      // console.log('lost ' + countLostGames)
     }
   }
 
@@ -83,7 +81,6 @@ function App() {
         {selectedWord ? (
           <div className="main">
           <Header  countWonGames={countWonGames} countLostGames={countLostGames}  />
-          {/* <Counter countWonGames={countWonGames} countLostGames={countLostGames} /> */}
           <div className="game">
           <Drawing wrongLetters={wrongLetters} />
           <WrongLetters wrongLetters={wrongLetters}/>
