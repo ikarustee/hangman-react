@@ -65,9 +65,20 @@ h1, h2 {
 h3, h4 {
   font-family: 'Raleway';
   font-weight:400;
-
+  margin: 0 0 0.5em;
 }
-h4 {font-weight:200;}
+.counter h6 {
+  font-family: 'Raleway';
+  font-weight: 200;
+  margin: 0;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.counter h6 span {
+  margin: 0 0.75em;
+}
+
 #root {
   display: flex;
   justify-content: center;
@@ -79,6 +90,19 @@ h4 {font-weight:200;}
 .header {
   margin-bottom: 2em;
   text-align: center;
+}
+.counter {
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  background-color:white;
+  color:black;
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 70%;
+  margin: 0 auto;
+  box-shadow: var(--shadow-elevation-medium);
 }
 .game {
   display:flex;
