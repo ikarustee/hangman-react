@@ -17,8 +17,9 @@ function App() {
   const [correctLetters, setCorrectLetters] = useState([])
   const [wrongLetters, setWrongLetters] = useState([])
   const [notificationPopup, setNotificationPopup] = useState(false)
-  const [countWonGames, setCountWonGames] = useState(0)
-  const [countLostGames, setCountLostGames] = useState(0)
+  const [countWonGames, setCountWonGames] = useState(localStorage.getItem('wonGames') || 0)
+  const [countLostGames, setCountLostGames] = useState(localStorage.getItem('lostGames') ||0)
+  const [playedGames, setPlayedGames] = useState(localStorage.getItem('totalPlayedGames') || 0)
 
   function countGames() {
     if( checkWin(correctLetters, wrongLetters, selectedWord) === 'win' ) {
@@ -26,6 +27,7 @@ function App() {
     } else if( checkWin(correctLetters, wrongLetters, selectedWord) === 'lose') {
       setCountLostGames((prev) => prev + 1)
     }
+    setPlayedGames((prev) => prev + 1)
   }
 
   const getRandomWords = () => {
@@ -76,11 +78,17 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeydown)
   }, [correctLetters, wrongLetters, playable, selectedWord])
 
+  useEffect(() => {
+    localStorage.setItem('wonGames', countWonGames)
+    localStorage.setItem('lostGames', countLostGames)
+    localStorage.setItem('totalPlayedGames', playedGames)
+  }, [countWonGames, countLostGames, playedGames])
+
   return (
     <div className="App">
         {selectedWord ? (
           <div className="main">
-          <Header  countWonGames={countWonGames} countLostGames={countLostGames}  />
+          <Header  countWonGames={countWonGames} countLostGames={countLostGames} playedGames={playedGames} />
           <div className="game">
           <Drawing wrongLetters={wrongLetters} />
           <WrongLetters wrongLetters={wrongLetters}/>
