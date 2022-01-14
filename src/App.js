@@ -17,9 +17,9 @@ function App() {
   const [correctLetters, setCorrectLetters] = useState([])
   const [wrongLetters, setWrongLetters] = useState([])
   const [notificationPopup, setNotificationPopup] = useState(false)
-  const [countWonGames, setCountWonGames] = useState(localStorage.getItem('wonGames') || 0)
-  const [countLostGames, setCountLostGames] = useState(localStorage.getItem('lostGames') ||0)
-  const [playedGames, setPlayedGames] = useState(localStorage.getItem('totalPlayedGames') || 0)
+  const [countWonGames, setCountWonGames] = useState(parseInt(localStorage.getItem('wonGames')) || 0)
+  const [countLostGames, setCountLostGames] = useState(parseInt(localStorage.getItem('lostGames')) ||0)
+  const [playedGames, setPlayedGames] = useState(parseInt(localStorage.getItem('totalPlayedGames')) || 0)
 
   function countGames() {
     if( checkWin(correctLetters, wrongLetters, selectedWord) === 'win' ) {
@@ -56,7 +56,7 @@ function App() {
     const handleKeydown = (e) => {
       const {key, keyCode} = e
       // console.log(key, keyCode, selectedWord, playable)
-      // console.log(selectedWord)
+      console.log(selectedWord)
       if(playable && keyCode >= 65 && keyCode <= 90) {
         const letter = key.toLowerCase()
         if(selectedWord.includes(letter)) {
